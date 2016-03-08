@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+    <!-- struts2的action必须放在一个指定的包空间下定义 -->
+    <package name="default" extends="struts-default">
+    <!-- 定义处理请求URL为login.action的Action -->
+        <action name="Login" class="com.dsblog.action.Login" method="login">
+        <!-- 定义处理结果字符串和资源之间的映射关系 -->
+            <result name="success">/index.jsp</result>
+            <result name="error">/erro.html</result>
+        </action>
+        
+         <action name="addBlog" class="com.dsblog.action.BlogService" method="add">
+        <!-- 定义处理结果字符串和资源之间的映射关系 -->
+            <result name="success">/index.jsp</result>
+            <result name="error">/erro.html</result>
+             <interceptor-ref name="tokenSession"></interceptor-ref>
+           <interceptor-ref name="defaultStack"></interceptor-ref>
+        </action>
+        
+        <action name="goIndex" class="com.dsblog.action.Login" method="goIndex">
+        <!-- 定义处理结果字符串和资源之间的映射关系 -->
+            <result name="go">/index.jsp</result>
+            <result name="error">/erro.html</result>
+        </action>
+    </package>
+</struts>
